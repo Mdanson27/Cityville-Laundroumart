@@ -21,7 +21,7 @@ The loader and hero already reference that filename. A CSS brand fallback is sho
 - Price guide from the supplied CityVille artwork
 - Kitintale branch location
 - Embedded Google Map and direct Get Directions link
-- Instagram, TikTok, X and official website links
+- Instagram, TikTok and official website links
 - Mobile floating quick-action dock
 
 ## Deployment
