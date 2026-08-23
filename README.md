@@ -19,8 +19,8 @@ The loader and hero already reference that filename. A CSS brand fallback is sho
 - Dynamic QR code for the deployed profile URL
 - Native Share Profile action
 - Price guide from the supplied CityVille artwork
-- Kitintale and Naalya branch switcher
-- Embedded Google Maps and direct Get Directions links
+- Kitintale branch location
+- Embedded Google Map and direct Get Directions link
 - Instagram, TikTok, X and official website links
 - Mobile floating quick-action dock
 
