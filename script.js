@@ -7,198 +7,107 @@
     direct: '+256702723070',
     email: 'akg@cityvillelaundromat.com',
     website: 'https://cityvillelaundromat.com/',
-    facebook: 'https://www.facebook.com/cityvillelaundromatuganda/',
     address: 'Mutungo Hill Junction / Church Road, Kitintale, Kampala, Uganda'
   };
 
   const BRANCHES = {
     kitintale: {
-      name: 'CityVille Laundromat — Kitintale',
-      address: 'Mutungo Hill Junction / Church Road, Kitintale, Kampala',
-      map: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.757802248595!2d32.633898374964716!3d0.3155761996813276!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x177dbf3f3435494b%3A0xf1de012e125fe2d!2sCityVille+Laundromat!5e0!3m2!1sen!2ske!4v1700149034921!5m2!1sen!2ske',
-      directions: 'https://www.google.com/maps/dir/?api=1&destination=0.3155761996813276%2C32.633898374964716&destination_place_id=ChIJS0k1ND-_fRcRLf4l4RLgHQ8'
+      label: 'Kitintale',
+      address: 'Mutungo Hill Junction / Church Road, Kampala',
+      map: 'https://www.google.com/maps?q=0.3155762,32.6338984&z=17&output=embed',
+      directions: 'https://www.google.com/maps/dir/?api=1&destination=0.3155762%2C32.6338984'
     },
     naalya: {
-      name: 'CityVille Laundromat — Naalya',
+      label: 'Naalya',
       address: 'Metroplex Shopping Centre, Naalya, Kampala',
-      map: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.736249091345!2d32.6330556!3d0.36749999999999994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x177db9f40f689413%3A0xae7ffd566351f185!2sMetroplex+Shopping+Centre!5e0!3m2!1sen!2ske!4v1776762363431!5m2!1sen!2ske',
-      directions: 'https://www.google.com/maps/dir/?api=1&destination=Metroplex+Shopping+Centre%2C+Naalya%2C+Kampala%2C+Uganda'
+      map: 'https://www.google.com/maps?q=CityVille+Laundromat+Metroplex+Naalya+Kampala&z=17&output=embed',
+      directions: 'https://www.google.com/maps/dir/?api=1&destination=CityVille+Laundromat%2C+Metroplex+Shopping+Centre%2C+Naalya%2C+Kampala%2C+Uganda'
     }
   };
 
-  const $ = (selector, root = document) => root.querySelector(selector);
-  const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
+  const $ = (s, root = document) => root.querySelector(s);
+  const $$ = (s, root = document) => [...root.querySelectorAll(s)];
+  let currentBranch = 'kitintale';
+  let toastTimer;
 
-  // The official Facebook page is injected before the website tile so all current social channels are present.
-  const socialGrid = $('.social-grid');
-  if (socialGrid && !socialGrid.querySelector('[data-social="facebook"]')) {
-    const facebook = document.createElement('a');
-    facebook.href = CONFIG.facebook;
-    facebook.target = '_blank';
-    facebook.rel = 'noopener';
-    facebook.dataset.social = 'facebook';
-    facebook.innerHTML = '<span>Facebook</span><strong>CityVille Uganda</strong><b>↗</b>';
-    socialGrid.insertBefore(facebook, socialGrid.lastElementChild);
+  window.addEventListener('load', () => setTimeout(() => $('#loader')?.classList.add('done'), 3100));
+  setTimeout(() => $('#loader')?.classList.add('done'), 4600);
+
+  function toast(message) {
+    const el = $('#toast');
+    if (!el) return;
+    el.textContent = message;
+    el.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => el.classList.remove('show'), 2200);
   }
-
-  window.addEventListener('load', () => {
-    window.setTimeout(() => $('#loader')?.classList.add('done'), 2850);
-  });
-
-  window.addEventListener('scroll', () => {
-    $('.topbar')?.classList.toggle('scrolled', window.scrollY > 10);
-  }, { passive: true });
-
-  const revealItems = $$('.reveal');
-  if ('IntersectionObserver' in window) {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' });
-    revealItems.forEach((el) => observer.observe(el));
-  } else {
-    revealItems.forEach((el) => el.classList.add('visible'));
-  }
-
-  const map = $('#branch-map');
-  const branchName = $('#branch-name');
-  const branchAddress = $('#branch-address');
-  const directionsLink = $('#directions-link');
 
   function setBranch(key) {
-    const branch = BRANCHES[key] || BRANCHES.kitintale;
-    if (map) map.src = branch.map;
-    if (branchName) branchName.textContent = branch.name;
-    if (branchAddress) branchAddress.textContent = branch.address;
-    if (directionsLink) directionsLink.href = branch.directions;
-    $$('.branch-tab').forEach((tab) => {
-      const active = tab.dataset.branch === key;
-      tab.classList.toggle('active', active);
-      tab.setAttribute('aria-selected', String(active));
-    });
-  }
-
-  $$('.branch-tab').forEach((tab) => tab.addEventListener('click', () => setBranch(tab.dataset.branch)));
-  setBranch('kitintale');
-
-  let toastTimer;
-  function toast(message) {
-    const node = $('#toast');
-    if (!node) return;
-    node.textContent = message;
-    node.classList.add('show');
-    clearTimeout(toastTimer);
-    toastTimer = setTimeout(() => node.classList.remove('show'), 2400);
+    currentBranch = BRANCHES[key] ? key : 'kitintale';
+    const b = BRANCHES[currentBranch];
+    $('#branch-name').textContent = b.label;
+    $('#branch-address').textContent = b.address;
+    $('#branch-map').src = b.map;
+    $('#directions-link').href = b.directions;
+    $$('.branch-toggle button').forEach(btn => btn.classList.toggle('active', btn.dataset.branch === currentBranch));
   }
 
   function saveContact() {
-    const vcard = [
-      'BEGIN:VCARD',
-      'VERSION:3.0',
-      'N:Guma;Alexandria K.;;;',
-      `FN:${CONFIG.business}`,
-      `ORG:${CONFIG.business}`,
-      'TITLE:Managing Director',
-      `TEL;TYPE=CELL:${CONFIG.direct}`,
-      `TEL;TYPE=WORK:${CONFIG.phone}`,
-      `TEL;TYPE=WORK:${CONFIG.phone2}`,
-      `EMAIL;TYPE=WORK:${CONFIG.email}`,
-      `URL:${CONFIG.website}`,
+    const lines = [
+      'BEGIN:VCARD','VERSION:3.0','N:Guma;Alexandria K.;;;',
+      `FN:${CONFIG.business}`,`ORG:${CONFIG.business}`,
+      `TEL;TYPE=CELL:${CONFIG.direct}`,`TEL;TYPE=WORK:${CONFIG.phone}`,`TEL;TYPE=WORK:${CONFIG.phone2}`,
+      `EMAIL;TYPE=WORK:${CONFIG.email}`,`URL:${CONFIG.website}`,
       `ADR;TYPE=WORK:;;${CONFIG.address};;;;`,
-      'NOTE:Delivering Freshness! Same-day wash, dry and fold services in Kampala.',
-      'END:VCARD'
-    ].join('\r\n');
-
-    const blob = new Blob([vcard], { type: 'text/vcard;charset=utf-8' });
+      'NOTE:Delivering Freshness! CityVille Laundromat — wash, dry and fold services in Kampala.','END:VCARD'
+    ];
+    const blob = new Blob([lines.join('\r\n')], {type:'text/vcard;charset=utf-8'});
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
-    a.href = url;
-    a.download = 'CityVille-Laundromat.vcf';
-    document.body.appendChild(a);
-    a.click();
-    a.remove();
-    URL.revokeObjectURL(url);
-    toast('Contact card ready to save');
+    a.href = url; a.download = 'CityVille-Laundromat.vcf';
+    document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
+    toast('CityVille contact ready to save');
   }
 
-  function profileUrl() {
-    return window.location.href.split('#')[0];
-  }
+  const profileUrl = () => location.href.split('#')[0].split('?')[0];
 
   function renderQr(target, size) {
-    if (!target || target.dataset.ready === 'true') return;
-    if (typeof QRCode === 'undefined') {
-      setTimeout(() => renderQr(target, size), 120);
-      return;
-    }
+    if (!target || target.dataset.ready === '1') return;
+    if (typeof QRCode === 'undefined') return setTimeout(() => renderQr(target, size), 120);
     target.innerHTML = '';
-    new QRCode(target, {
-      text: profileUrl(),
-      width: size,
-      height: size,
-      colorDark: '#071924',
-      colorLight: '#ffffff',
-      correctLevel: QRCode.CorrectLevel.H
-    });
-    target.dataset.ready = 'true';
+    new QRCode(target,{text:profileUrl(),width:size,height:size,colorDark:'#071923',colorLight:'#ffffff',correctLevel:QRCode.CorrectLevel.H});
+    target.dataset.ready = '1';
   }
 
-  function openQr() {
-    const modal = $('#qr-modal');
-    if (!modal) return;
-    modal.classList.add('open');
-    modal.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden';
-    renderQr($('#qr-large'), 228);
+  function openModal(id) {
+    $$('.modal').forEach(m => { m.classList.remove('open'); m.setAttribute('aria-hidden','true'); });
+    const modal = $(id); if (!modal) return;
+    modal.classList.add('open'); modal.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden';
+    if (id === '#qr-modal') renderQr($('#qr-large'), 230);
   }
-
-  function closeQr() {
-    const modal = $('#qr-modal');
-    if (!modal) return;
-    modal.classList.remove('open');
-    modal.setAttribute('aria-hidden', 'true');
-    document.body.style.overflow = '';
-  }
+  function closeModals() { $$('.modal').forEach(m => {m.classList.remove('open');m.setAttribute('aria-hidden','true');}); document.body.style.overflow=''; }
 
   async function shareProfile() {
-    const data = {
-      title: 'CityVille Laundromat',
-      text: 'CityVille Laundromat — Delivering Freshness! View contacts, prices, branches and directions.',
-      url: profileUrl()
-    };
+    const data = {title:'CityVille Laundromat',text:'CityVille Laundromat — Delivering Freshness! Call, WhatsApp, prices and directions.',url:profileUrl()};
     try {
-      if (navigator.share) {
-        await navigator.share(data);
-      } else if (navigator.clipboard) {
-        await navigator.clipboard.writeText(data.url);
-        toast('Profile link copied');
-      } else {
-        window.prompt('Copy this profile link:', data.url);
-      }
-    } catch (error) {
-      if (error?.name !== 'AbortError') toast('Unable to share right now');
-    }
+      if (navigator.share) return await navigator.share(data);
+      if (navigator.clipboard) { await navigator.clipboard.writeText(data.url); return toast('Profile link copied'); }
+      window.prompt('Copy this profile link:', data.url);
+    } catch (e) { if (e?.name !== 'AbortError') toast('Could not share right now'); }
   }
 
-  $$('[data-action]').forEach((el) => {
-    el.addEventListener('click', () => {
-      const action = el.dataset.action;
-      if (action === 'save-contact') saveContact();
-      if (action === 'show-qr') openQr();
-      if (action === 'close-qr') closeQr();
-      if (action === 'share') shareProfile();
-    });
-  });
+  $$('[data-branch]').forEach(btn => btn.addEventListener('click', () => setBranch(btn.dataset.branch)));
+  $$('[data-action]').forEach(el => el.addEventListener('click', () => {
+    const action = el.dataset.action;
+    if (action === 'save-contact') saveContact();
+    if (action === 'share') shareProfile();
+    if (action === 'show-qr') openModal('#qr-modal');
+    if (action === 'show-prices') openModal('#price-modal');
+    if (action === 'close-modal') closeModals();
+    if (action === 'directions') window.open(BRANCHES[currentBranch].directions, '_blank', 'noopener');
+  }));
 
-  document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape') closeQr();
-  });
-
-  const startQr = () => renderQr($('#qr-inline'), 176);
-  if (document.readyState === 'complete') startQr(); else window.addEventListener('load', startQr);
-  if ($('#year')) $('#year').textContent = new Date().getFullYear();
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModals(); });
+  setBranch('kitintale');
+  window.addEventListener('load', () => renderQr($('#qr-inline'), 128));
 })();
