@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 210" role="img" aria-label="CityVille water drop">
+  <g fill="none" stroke="#18a6d7" stroke-linecap="round" stroke-linejoin="round">
+    <path stroke-width="6" d="M80 8C62 45 35 78 35 124c0 35 20 72 45 77 25-5 45-42 45-77 0-46-27-79-45-116Z"/>
+    <path stroke-width="5" d="M80 24C65 56 45 84 45 124c0 30 17 61 35 66 18-5 35-36 35-66 0-40-20-68-35-100Z"/>
+    <path stroke-width="5" d="M80 42C68 69 55 91 55 124c0 25 13 48 25 52 12-4 25-27 25-52 0-33-13-55-25-82Z"/>
+    <path stroke-width="5" d="M80 61C71 83 65 100 65 124c0 19 8 35 15 38 7-3 15-19 15-38 0-24-6-41-15-63Z"/>
+  </g>
+  <path d="M80 78c8 16 12 29 12 43 0 18-6 30-12 33-6-3-12-15-12-33 0-14 4-27 12-43Z" fill="#18a6d7"/>
+  <circle cx="69" cy="103" r="5" fill="#fff"/>
+  <path d="M80 88c4 8 7 16 8 25" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
+</svg>
