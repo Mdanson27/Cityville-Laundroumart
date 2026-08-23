@@ -7,6 +7,7 @@
     direct: '+256702723070',
     email: 'akg@cityvillelaundromat.com',
     website: 'https://cityvillelaundromat.com/',
+    facebook: 'https://www.facebook.com/cityvillelaundromatuganda/',
     address: 'Mutungo Hill Junction / Church Road, Kitintale, Kampala, Uganda'
   };
 
@@ -27,6 +28,18 @@
 
   const $ = (selector, root = document) => root.querySelector(selector);
   const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
+
+  // The official Facebook page is injected before the website tile so all current social channels are present.
+  const socialGrid = $('.social-grid');
+  if (socialGrid && !socialGrid.querySelector('[data-social="facebook"]')) {
+    const facebook = document.createElement('a');
+    facebook.href = CONFIG.facebook;
+    facebook.target = '_blank';
+    facebook.rel = 'noopener';
+    facebook.dataset.social = 'facebook';
+    facebook.innerHTML = '<span>Facebook</span><strong>CityVille Uganda</strong><b>↗</b>';
+    socialGrid.insertBefore(facebook, socialGrid.lastElementChild);
+  }
 
   window.addEventListener('load', () => {
     window.setTimeout(() => $('#loader')?.classList.add('done'), 2850);
