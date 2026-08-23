@@ -7,8 +7,7 @@
     direct: '+256702723070',
     email: 'akg@cityvillelaundromat.com',
     website: 'https://cityvillelaundromat.com/',
-    kitintale: 'Mutungo Hill Junction / Church Road, Kitintale, Kampala, Uganda',
-    naalya: 'Metroplex Shopping Centre, Naalya, Kampala, Uganda'
+    kitintale: 'Mutungo Hill Junction / Church Road, Kitintale, Kampala, Uganda'
   };
 
   const $ = (s, root = document) => root.querySelector(s);
@@ -34,8 +33,7 @@
       `TEL;TYPE=CELL:${CONFIG.direct}`,`TEL;TYPE=WORK,VOICE:${CONFIG.phone}`,`TEL;TYPE=WORK,VOICE:${CONFIG.phone2}`,
       `EMAIL;TYPE=WORK:${CONFIG.email}`,`URL:${CONFIG.website}`,
       `ADR;TYPE=WORK:;;${CONFIG.kitintale};;;;`,
-      `ADR;TYPE=WORK:;;${CONFIG.naalya};;;;`,
-      'NOTE:Delivering Freshness! CityVille Laundromat — professional wash, dry and fold services in Kampala. Branches: Kitintale and Naalya.',
+      'NOTE:Delivering Freshness! CityVille Laundromat — professional wash, dry and fold services at the Kitintale branch in Kampala.',
       'END:VCARD'
     ];
     const blob = new Blob([lines.join('\r\n')], {type:'text/vcard;charset=utf-8'});
@@ -76,7 +74,7 @@
   }
 
   async function shareProfile() {
-    const data = {title:'CityVille Laundromat',text:'CityVille Laundromat — Delivering Freshness! View contacts, prices, services and both Kampala locations.',url:profileUrl()};
+    const data = {title:'CityVille Laundromat',text:'CityVille Laundromat — Delivering Freshness! View contacts, prices, services and directions to the Kitintale branch.',url:profileUrl()};
     try {
       if (navigator.share) { await navigator.share(data); return; }
       if (navigator.clipboard) { await navigator.clipboard.writeText(data.url); toast('Profile link copied'); return; }
