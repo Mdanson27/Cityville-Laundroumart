@@ -4,12 +4,12 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="theme-color" content="#ffffff" />
-  <meta name="description" content="CityVille Laundromat digital profile — call, WhatsApp, save contact, view prices, scan QR and get directions." />
+  <meta name="description" content="CityVille Laundromat digital profile — same-day laundry in Kampala. Call, WhatsApp, save contact, view prices, scan QR and get directions to Kitintale or Naalya." />
   <meta property="og:title" content="CityVille Laundromat — Delivering Freshness!" />
-  <meta property="og:description" content="Fast, affordable and reliable laundry services in Kampala." />
+  <meta property="og:description" content="Professional wash, dry and fold services in Kampala." />
   <meta property="og:image" content="cityville-logo.png" />
   <title>CityVille Laundromat | Digital Profile</title>
-  <link rel="icon" href="cityville-drop.svg" type="image/svg+xml" />
+  <link rel="icon" href="cityville-drop.png" type="image/png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500&display=swap" rel="stylesheet" />
@@ -17,8 +17,8 @@
 </head>
 <body>
   <div class="loader" id="loader" aria-hidden="true">
-    <div class="loader-drop-wrap"><img src="cityville-drop.svg" class="loader-drop" alt="" /></div>
-    <div class="loader-ripple r1"></div><div class="loader-ripple r2"></div>
+    <div class="loader-drop-stage"><img src="cityville-drop.png" class="loader-drop" alt="" /></div>
+    <div class="loader-ripple ripple-a"></div><div class="loader-ripple ripple-b"></div>
     <div class="loader-whiteout"></div>
     <img src="cityville-logo.png" class="loader-full-logo" alt="" />
   </div>
@@ -26,20 +26,23 @@
   <header class="topbar">
     <a class="nav-logo" href="#top" aria-label="CityVille Laundromat home"><img src="cityville-logo.png" alt="CityVille Laundromat" /></a>
     <button class="share-btn" type="button" data-action="share" aria-label="Share CityVille profile">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 8a3 3 0 1 0-2.83-4A3 3 0 0 0 18 8ZM6 15a3 3 0 1 0 2.83 4A3 3 0 0 0 6 15Zm12 1a3 3 0 1 0 2.83 4A3 3 0 0 0 18 16ZM8.6 8.7l6.8-3.4M8.6 15.3l6.8 3.4"/></svg>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="18" cy="5" r="2.4"/><circle cx="6" cy="12" r="2.4"/><circle cx="18" cy="19" r="2.4"/><path d="M8.2 10.9l7.5-4.4M8.2 13.1l7.5 4.4"/></svg>
       <span>Share</span>
     </button>
   </header>
 
   <main id="top">
-    <section class="screen hero-screen">
+    <section class="hero-section section-shell">
       <div class="hero-orb orb-a"></div><div class="hero-orb orb-b"></div>
       <div class="hero-logo-wrap"><img src="cityville-logo.png" alt="CityVille Laundromat — Delivering Freshness!" /></div>
-      <div class="hero-copy">
-        <span class="eyebrow">Kampala • Same-day laundry</span>
-        <h1>Fresh laundry.<br><span>Less waiting.</span></h1>
-        <p>Professional wash, dry &amp; fold with convenient service in Kitintale and Naalya.</p>
-        <div class="open-chip"><i></i><strong>Open daily</strong><span>8:00 AM – 10:00 PM</span></div>
+      <span class="eyebrow hero-eyebrow">Kampala • Same-day laundry</span>
+      <h1>Fresh laundry.<br><span>Less waiting.</span></h1>
+      <p class="hero-lead">Professional wash, dry &amp; fold with convenient service in Kitintale and Naalya. CityVille combines modern commercial laundry equipment, careful garment handling and fast turnaround.</p>
+
+      <div class="trust-row" aria-label="CityVille highlights">
+        <span><i class="dot green"></i><b>Open daily</b> 8:00 AM – 10:00 PM</span>
+        <span><i class="dot blue"></i>Two Kampala locations</span>
+        <span><i class="dot red"></i>Same-day eligible loads</span>
       </div>
 
       <button class="save-contact-main" type="button" data-action="save-contact">
@@ -50,46 +53,75 @@
       <div class="quick-grid">
         <a href="tel:+256764002097" class="quick"><span class="qicon blue">☎</span><b>Call</b></a>
         <a href="https://wa.me/256764002097?text=Hello%20CityVille%20Laundromat%2C%20I%20would%20like%20to%20inquire%20about%20your%20laundry%20services." target="_blank" rel="noopener" class="quick"><span class="qicon green">●</span><b>WhatsApp</b></a>
-        <button class="quick" type="button" data-action="directions"><span class="qicon blue">⌖</span><b>Directions</b></button>
+        <a href="#locations" class="quick"><span class="qicon blue">⌖</span><b>Directions</b></a>
         <button class="quick" type="button" data-action="show-qr"><span class="qicon dark">▦</span><b>QR Code</b></button>
       </div>
+
+      <div class="hero-info-strip">
+        <article><strong>Wash</strong><span>Professional cleaning</span></article>
+        <article><strong>Dry</strong><span>Commercial drying</span></article>
+        <article><strong>Fold</strong><span>Neat &amp; ready</span></article>
+      </div>
     </section>
 
-    <section class="screen info-screen" id="services">
-      <div class="section-title"><div><span class="eyebrow">CityVille at a glance</span><h2>Wash. Dry. Fold. Done.</h2></div><button class="text-btn" type="button" data-action="show-prices">Full prices</button></div>
-
-      <div class="service-strip">
-        <article><span>01</span><b>Wash</b><small>Professional care</small></article>
-        <article><span>02</span><b>Dry</b><small>Commercial drying</small></article>
-        <article><span>03</span><b>Fold</b><small>Neat &amp; ready</small></article>
+    <section class="info-section section-shell" id="services">
+      <div class="section-title-row">
+        <div><span class="eyebrow">Services &amp; prices</span><h2>Everything your laundry needs.</h2></div>
+        <button class="text-btn" type="button" data-action="show-prices">Full price list</button>
       </div>
 
-      <div class="price-feature">
-        <div><small>Daily laundry</small><strong>UGX 10,000 <em>/kg</em></strong><span>Wash • Dry • Fold</span></div>
-        <button type="button" data-action="show-prices">See price list</button>
+      <div class="services-grid">
+        <article><span class="service-number">01</span><strong>Daily Laundry</strong><p>Wash, dry &amp; fold for everyday clothing.</p><b>UGX 10,000 / kg</b></article>
+        <article><span class="service-number">02</span><strong>Duvets</strong><p>Large, medium and small duvet cleaning.</p><b>From UGX 25,000</b></article>
+        <article><span class="service-number">03</span><strong>Curtains</strong><p>Professional curtain cleaning by weight.</p><b>UGX 10,000 / kg</b></article>
+        <article><span class="service-number">04</span><strong>Jackets &amp; Suits</strong><p>Care for structured garments and formal wear.</p><b>From UGX 15,000</b></article>
+        <article><span class="service-number">05</span><strong>Shoe Cleaning</strong><p>Adult and children’s shoe cleaning.</p><b>From UGX 8,000</b></article>
+        <article class="promo-card"><span class="service-number">06</span><strong>Offers</strong><p>Ask about current online booking and student promotions.</p><button type="button" data-action="show-prices">View details</button></article>
       </div>
 
-      <div class="location-head">
-        <div><span class="eyebrow">Find us</span><h3 id="branch-name">Kitintale</h3><p id="branch-address">Mutungo Hill Junction / Church Road, Kampala</p></div>
-        <div class="branch-toggle" aria-label="Choose branch"><button class="active" data-branch="kitintale" type="button">Kitintale</button><button data-branch="naalya" type="button">Naalya</button></div>
+      <div class="about-band">
+        <img src="cityville-drop.png" alt="" />
+        <div><span class="eyebrow light">About CityVille</span><h3>Delivering Freshness!</h3><p>CityVille Laundromat is designed around speed, convenience and consistent garment care. Customers can access professional laundry services from two Kampala branches and quickly reach the team by phone, WhatsApp or online.</p></div>
       </div>
-      <div class="mini-map"><iframe id="branch-map" title="CityVille Laundromat location" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe><a id="directions-link" class="map-cta" target="_blank" rel="noopener">Get Directions</a></div>
+
+      <div class="locations-block" id="locations">
+        <div class="locations-heading"><div><span class="eyebrow">Find us</span><h2>Choose your nearest branch.</h2></div><p>Both locations have their own map and direct Google Maps directions.</p></div>
+
+        <div class="branch-map-list">
+          <article class="branch-map-card">
+            <div class="branch-copy"><span class="branch-badge">01</span><div><strong>Kitintale</strong><p>Mutungo Hill Junction / Church Road, Kampala</p></div><a href="https://www.google.com/maps/dir/?api=1&destination=0.3155762%2C32.6338984" target="_blank" rel="noopener">Get Directions</a></div>
+            <iframe title="CityVille Laundromat Kitintale location" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=0.3155762,32.6338984&z=17&output=embed"></iframe>
+          </article>
+
+          <article class="branch-map-card">
+            <div class="branch-copy"><span class="branch-badge">02</span><div><strong>Naalya</strong><p>Metroplex Shopping Centre, Naalya, Kampala</p></div><a href="https://www.google.com/maps/dir/?api=1&destination=CityVille+Laundromat%2C+Metroplex+Shopping+Centre%2C+Naalya%2C+Kampala%2C+Uganda" target="_blank" rel="noopener">Get Directions</a></div>
+            <iframe title="CityVille Laundromat Naalya location" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=CityVille+Laundromat+Metroplex+Naalya+Kampala&z=17&output=embed"></iframe>
+          </article>
+        </div>
+      </div>
     </section>
 
-    <section class="screen connect-screen" id="contact">
-      <div class="connect-top">
-        <img class="footer-city-logo" src="cityville-logo.png" alt="CityVille Laundromat" />
-        <div><span class="eyebrow">Keep CityVille close</span><h2>Scan. Save. Connect.</h2></div>
+    <section class="connect-section section-shell" id="contact">
+      <div class="connect-heading">
+        <img src="cityville-logo.png" alt="CityVille Laundromat" />
+        <div><span class="eyebrow">Keep CityVille close</span><h2>Scan. Save. Connect.</h2><p>Save the profile, scan it from another phone or contact CityVille directly.</p></div>
       </div>
 
       <div class="connect-grid">
-        <button class="qr-card" type="button" data-action="show-qr" aria-label="Open QR code"><div id="qr-inline"></div><span>Tap to enlarge</span></button>
+        <button class="qr-card" type="button" data-action="show-qr" aria-label="Open QR code"><div id="qr-inline"></div><span>Tap to enlarge QR</span></button>
         <div class="contact-card">
+          <a href="tel:+256702723070"><small>Direct</small><strong>0702 723070</strong></a>
           <a href="tel:+256764002097"><small>Call / WhatsApp</small><strong>+256 764 002 097</strong></a>
           <a href="tel:+256709706031"><small>Office</small><strong>0709 706 031</strong></a>
           <a href="mailto:akg@cityvillelaundromat.com"><small>Email</small><strong>akg@cityvillelaundromat.com</strong></a>
           <a href="https://cityvillelaundromat.com/" target="_blank" rel="noopener"><small>Website</small><strong>cityvillelaundromat.com</strong></a>
         </div>
+      </div>
+
+      <div class="business-details">
+        <article><small>Business contact</small><strong>Alexandria K. Guma</strong></article>
+        <article><small>Postal address</small><strong>P.O. Box 27155, Kampala – Uganda</strong></article>
+        <article><small>Core service</small><strong>Wash • Dry • Fold • Specialist items</strong></article>
       </div>
 
       <div class="social-row" aria-label="Social media">
@@ -100,17 +132,17 @@
       </div>
 
       <button class="save-contact-secondary" type="button" data-action="save-contact">＋ Save CityVille Contact</button>
-
-      <footer class="profile-footer">
-        <img class="footer-brand-logo" src="cityville-logo.png" alt="CityVille Laundromat" />
-        <a class="autominds-link" href="https://automindsafrica.com" target="_blank" rel="noopener" aria-label="Made by AutoMinds Africa">
-          <span class="made-by">Made by</span>
-          <span class="washer" aria-hidden="true"><span class="washer-panel"></span><span class="washer-door"><span class="washer-drum"></span></span></span>
-          <span class="autominds-name">AutoMinds Africa</span>
-        </a>
-      </footer>
     </section>
   </main>
+
+  <footer class="page-footer">
+    <img class="footer-brand-logo" src="cityville-logo.png" alt="CityVille Laundromat" />
+    <a class="autominds-link" href="https://automindsafrica.com" target="_blank" rel="noopener" aria-label="Made by AutoMinds Africa">
+      <span class="made-by">Made by</span>
+      <span class="washer" aria-hidden="true"><span class="washer-panel"></span><span class="washer-door"><span class="washer-drum"></span></span></span>
+      <span class="autominds-name">AutoMinds Africa</span>
+    </a>
+  </footer>
 
   <nav class="mobile-dock" aria-label="Quick actions">
     <a href="tel:+256764002097"><span>☎</span><b>Call</b></a>
@@ -119,9 +151,9 @@
     <button type="button" data-action="show-qr"><span>▦</span><b>QR</b></button>
   </nav>
 
-  <div class="modal" id="qr-modal" aria-hidden="true"><button class="modal-backdrop" data-action="close-modal" aria-label="Close"></button><div class="modal-card qr-modal-card"><button class="modal-close" type="button" data-action="close-modal">×</button><img src="cityville-logo.png" alt="CityVille Laundromat" /><h3>Scan to open CityVille</h3><div id="qr-large"></div><p>This QR always points to this digital profile.</p></div></div>
+  <div class="modal" id="qr-modal" aria-hidden="true"><button class="modal-backdrop" data-action="close-modal" aria-label="Close"></button><div class="modal-card qr-modal-card"><button class="modal-close" type="button" data-action="close-modal">×</button><img src="cityville-logo.png" alt="CityVille Laundromat" /><h3>Scan to open CityVille</h3><div id="qr-large"></div><p>This QR points directly to this digital profile.</p></div></div>
 
-  <div class="modal" id="price-modal" aria-hidden="true"><button class="modal-backdrop" data-action="close-modal" aria-label="Close"></button><div class="modal-card price-modal-card"><button class="modal-close" type="button" data-action="close-modal">×</button><span class="eyebrow">CityVille price guide</span><h3>Laundry prices</h3><div class="price-list"><div><span>Daily Laundry (Wash, Dry &amp; Fold)</span><b>UGX 10,000 / kg</b></div><div><span>1–10 kg rate</span><b>UGX 8,000 / kg</b></div><div><span>Duvet — Large (6ft × 6ft)</span><b>UGX 40,000</b></div><div><span>Duvet — Medium (5ft × 6ft)</span><b>UGX 35,000</b></div><div><span>Duvet — Small (4ft × 6ft)</span><b>UGX 25,000</b></div><div><span>Curtains</span><b>UGX 10,000 / kg</b></div><div><span>Jackets</span><b>UGX 15,000 / piece</b></div><div><span>Suits</span><b>UGX 25,000 / pair</b></div><div><span>Shoe cleaning — Adults</span><b>UGX 10,000 / pair</b></div><div><span>Shoe cleaning — Kids</span><b>UGX 8,000 / pair</b></div></div><p class="price-note">Prices reproduced from the supplied CityVille artwork. Confirm current rates when booking.</p></div></div>
+  <div class="modal" id="price-modal" aria-hidden="true"><button class="modal-backdrop" data-action="close-modal" aria-label="Close"></button><div class="modal-card price-modal-card"><button class="modal-close" type="button" data-action="close-modal">×</button><span class="eyebrow">CityVille price guide</span><h3>Laundry prices</h3><div class="price-list"><div><span>Daily Laundry (Wash, Dry &amp; Fold)</span><b>UGX 10,000 / kg</b></div><div><span>1–10 kg rate</span><b>UGX 8,000 / kg</b></div><div><span>Duvet — Large (6ft × 6ft)</span><b>UGX 40,000</b></div><div><span>Duvet — Medium (5ft × 6ft)</span><b>UGX 35,000</b></div><div><span>Duvet — Small (4ft × 6ft)</span><b>UGX 25,000</b></div><div><span>Curtains</span><b>UGX 10,000 / kg</b></div><div><span>Jackets</span><b>UGX 15,000 / piece</b></div><div><span>Suits</span><b>UGX 25,000 / pair</b></div><div><span>Shoe cleaning — Adults</span><b>UGX 10,000 / pair</b></div><div><span>Shoe cleaning — Kids</span><b>UGX 8,000 / pair</b></div></div><p class="price-note">Prices reproduced from the supplied CityVille artwork. Confirm current rates and offers when booking.</p></div></div>
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" defer></script>
