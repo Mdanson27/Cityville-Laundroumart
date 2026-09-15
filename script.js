@@ -5,7 +5,7 @@
     phone: '+256764002097',
     phone2: '+256709706031',
     direct: '+256702723070',
-    email: 'akg@cityvillelaundromat.com',
+    email: 'alexiekgkll@gmail.com',
     website: 'https://cityvillelaundromat.com/',
     kitintale: 'Mutungo Hill Junction / Church Road, Kitintale, Kampala, Uganda'
   };
